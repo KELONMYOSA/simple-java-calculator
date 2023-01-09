@@ -28,6 +28,12 @@ public class Main {
         char sign = '+';
         boolean isRoman = false;
 
+        //Checking the count of numbers in the expression
+        if (input.split(" ").length != 3) {
+            System.out.println("Incorrect expression!");
+            throw new IllegalArgumentException("Incorrect expression!");
+        }
+
         //Defining numbers and sign
         try {
             //Arabic numbers
@@ -35,22 +41,10 @@ public class Main {
             sign = input.split(" ")[1].charAt(0);
             secondNum = Integer.parseInt(input.split(" ")[2]);
         } catch (Exception e) {
-            try {
-                //Roman numbers
-                firstNum = romanToArabic(input.split(" ")[0]);
-                sign = input.split(" ")[1].charAt(0);
-                secondNum = romanToArabic(input.split(" ")[2]);
-                isRoman = true;
-            } catch (Exception ex) {
-                System.out.println("Incorrect data!");
-                System.exit(1);
-            }
-        }
-
-        //Checking the count of numbers in the expression
-        if (input.split(" ").length > 3) {
-            System.out.println("A lot of numbers in the expression!");
-            throw new IllegalArgumentException("A lot of numbers in the expression!");
+            firstNum = romanToArabic(input.split(" ")[0]);
+            sign = input.split(" ")[1].charAt(0);
+            secondNum = romanToArabic(input.split(" ")[2]);
+            isRoman = true;
         }
 
         //Checking the value of numbers
